@@ -1,1 +1,244 @@
-<p>navbar works!</p>
+<nav class="sticky top-0 z-20 border-b border-gray-100 bg-white">
+    <div class="container flex items-center gap-6 px-4 py-3 2xl:gap-8">
+        <!-- Logo -->
+        <a routerLink="/home" class="flex shrink-0 items-center gap-2" aria-label="FreshCart home">
+            <i class="fa-solid fa-cart-shopping text-2xl text-primary xl:text-3xl" aria-hidden="true"></i>
+            <span class="text-2xl font-extrabold text-secondary xl:text-3xl">FreshCart</span>
+        </a>
+
+        <!-- Search (desktop) -->
+        <form role="search" class="relative hidden min-w-0 flex-1 xl:block" (submit)="$event.preventDefault()">
+            <label for="desktop-search" class="sr-only">Search products</label>
+            <input id="desktop-search" type="search" placeholder="Search for products, brands and more..."
+                class="block w-full rounded-full border border-gray-200 bg-gray-50 py-3.5 ps-6 pe-14 text-gray-900 placeholder:text-gray-400 focus:border-primary focus:ring-primary" />
+            <button type="submit" aria-label="Search"
+                class="absolute inset-e-1.5 top-1/2 flex size-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-primary text-white hover:bg-green-700 focus:ring-4 focus:ring-green-300 focus:outline-none">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+        </form>
+
+        <!-- Links (desktop) -->
+        <ul class="hidden shrink-0 items-center gap-7 text-lg text-secondary xl:flex">
+            <li>
+                <a routerLink="/" routerLinkActive="text-primary" ariaCurrentWhenActive="page"
+                    class="hover:text-primary cursor-pointer">Home</a>
+            </li>
+            <li>
+                <a routerLink="/shop" routerLinkActive="text-primary" ariaCurrentWhenActive="page"
+                    class="hover:text-primary cursor-pointer">Shop</a>
+            </li>
+            <li routerLinkActive="[&>button]:text-primary">
+                <button id="categories-button" type="button" data-dropdown-toggle="categories-dropdown"
+                    data-dropdown-trigger="hover" class="flex cursor-pointer items-center gap-2 hover:text-primary">
+                    Categories
+                    <i class="fa-solid fa-chevron-down text-xs" aria-hidden="true"></i>
+                </button>
+                <div id="categories-dropdown"
+                    class="z-10 hidden w-56 rounded-xl border border-gray-100 bg-white shadow-lg">
+                    <ul class="py-2 text-base text-gray-700" aria-labelledby="categories-button">
+                        <li>
+                            <a routerLink="/categories"
+                                class="cursor-pointer block px-4 py-2 font-semibold hover:bg-gray-50 hover:text-primary">All
+                                Categories</a>
+                        </li>
+                        <li>
+                            <a routerLink="/shop" 
+                                class="cursor-pointer block px-4 py-2 hover:bg-gray-50 hover:text-primary">Men's Fashion</a>
+                        </li>
+                        <li>
+                            <a routerLink="/shop" 
+                                class="cursor-pointer block px-4 py-2 hover:bg-gray-50 hover:text-primary">Women's Fashion</a>
+                        </li>
+                        <li>
+                            <a routerLink="/shop"
+                                class="cursor-pointer block px-4 py-2 hover:bg-gray-50 hover:text-primary">Electronics</a>
+                        </li>
+                        <li>
+                            <a routerLink="/shop" 
+                                class="cursor-pointer block px-4 py-2 hover:bg-gray-50 hover:text-primary">Beauty &amp; Health</a>
+                        </li>
+                        <li>
+                            <a routerLink="/shop" 
+                                class="cursor-pointer block px-4 py-2 hover:bg-gray-50 hover:text-primary">SuperMarket</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a routerLink="/brands" routerLinkActive="text-primary" ariaCurrentWhenActive="page"
+                    class="hover:text-primary cursor-pointer">Brands</a>
+            </li>
+        </ul>
+
+        <!-- Support (wide screens) -->
+        <div class="hidden shrink-0 items-center gap-3 border-e border-gray-200 pe-8 2xl:flex">
+            <span class="flex size-11 items-center justify-center rounded-full bg-green-50 text-lg text-primary">
+                <i class="fa-solid fa-headset" aria-hidden="true"></i>
+            </span>
+            <div class="leading-tight">
+                <p class="text-sm text-gray-500">Support</p>
+                <p class="text-sm font-semibold text-secondary">24/7 Help</p>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="ms-auto flex shrink-0 items-center gap-1">
+            <div role="group" aria-label="Language"
+                class="me-2 hidden rounded-full border border-gray-200 bg-gray-50 p-1 sm:inline-flex">
+                <button type="button" aria-pressed="true"
+                    class="cursor-pointer rounded-full bg-primary px-4 py-1.5 font-semibold text-white">
+                    EN
+                </button>
+                <button type="button" aria-pressed="false" lang="ar"
+                    class="cursor-pointer rounded-full px-4 py-1.5 font-semibold text-gray-600 hover:text-primary">
+                    عربي
+                </button>
+            </div>
+
+            <a routerLink="/wishlist" routerLinkActive="text-primary" aria-label="Wishlist"
+                class="flex size-11 items-center justify-center rounded-full text-2xl text-gray-500 hover:bg-gray-100 hover:text-primary">
+                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+            </a>
+            <a routerLink="/cart" routerLinkActive="text-primary" aria-label="Cart"
+                class="flex size-11 items-center justify-center rounded-full text-2xl text-gray-500 hover:bg-gray-100 hover:text-primary">
+                <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+            </a>
+
+            <a routerLink="/login"
+                class="ms-4 hidden items-center gap-2 rounded-full bg-primary px-8 py-3 text-lg font-semibold text-white hover:bg-green-700 focus:ring-4 focus:ring-green-300 focus:outline-none xl:inline-flex">
+                <i class="fa-regular fa-user text-base" aria-hidden="true"></i>
+                Sign In
+            </a>
+
+            <button type="button" #menuButton data-drawer-target="mobile-drawer" data-drawer-show="mobile-drawer"
+                data-drawer-placement="right" aria-controls="mobile-drawer" aria-label="Open menu"
+                class="ms-2 flex size-12 cursor-pointer items-center justify-center rounded-full bg-primary text-xl text-white hover:bg-green-700 focus:ring-4 focus:ring-green-300 focus:outline-none xl:hidden">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile drawer (kept outside <nav> so the sticky stacking context doesn't trap it under the backdrop) -->
+<div id="mobile-drawer" tabindex="-1" aria-label="Main menu"
+    class="fixed top-0 right-0 z-40 h-screen w-full max-w-sm translate-x-full overflow-y-auto bg-white transition-transform xl:hidden">
+    <div class="flex items-center justify-between border-b border-gray-100 bg-gray-50 px-5 py-4">
+        <a routerLink="/home" data-drawer-hide="mobile-drawer" (click)="menuButton.focus()"
+            class="flex items-center gap-2" aria-label="FreshCart home">
+            <i class="fa-solid fa-cart-shopping text-3xl text-primary" aria-hidden="true"></i>
+            <span class="text-3xl font-extrabold text-secondary">FreshCart</span>
+        </a>
+        <button type="button" data-drawer-hide="mobile-drawer" (click)="menuButton.focus()"
+            aria-controls="mobile-drawer" aria-label="Close menu"
+            class="flex size-10 cursor-pointer items-center justify-center rounded-full bg-gray-200/70 text-xl text-gray-600 hover:bg-gray-200">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="border-b border-gray-100 p-5">
+        <form role="search" class="relative" (submit)="$event.preventDefault()">
+            <label for="mobile-search" class="sr-only">Search products</label>
+            <input id="mobile-search" type="search" placeholder="Search products..."
+                class="block w-full rounded-xl border border-gray-200 bg-gray-50 py-3 ps-4 pe-12 text-gray-900 placeholder:text-gray-400 focus:border-primary focus:ring-primary" />
+            <button type="submit" aria-label="Search"
+                class="absolute inset-e-2 top-1/2 flex size-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-lg bg-primary text-white hover:bg-green-700">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+        </form>
+    </div>
+
+    <div class="px-5">
+        <ul class="space-y-1 border-b border-gray-100 py-4 text-lg text-secondary">
+            <li>
+                <a routerLink="/home" routerLinkActive="bg-green-50 text-primary" ariaCurrentWhenActive="page"
+                    data-drawer-hide="mobile-drawer" (click)="menuButton.focus()"
+                    class="block rounded-lg px-4 py-3 hover:bg-gray-50 hover:text-primary">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a routerLink="/shop" routerLinkActive="bg-green-50 text-primary" ariaCurrentWhenActive="page"
+                    data-drawer-hide="mobile-drawer" (click)="menuButton.focus()"
+                    class="block rounded-lg px-4 py-3 hover:bg-gray-50 hover:text-primary">
+                    Shop
+                </a>
+            </li>
+            <li>
+                <a routerLink="/categories" routerLinkActive="bg-green-50 text-primary" ariaCurrentWhenActive="page"
+                    data-drawer-hide="mobile-drawer" (click)="menuButton.focus()"
+                    class="block rounded-lg px-4 py-3 hover:bg-gray-50 hover:text-primary">
+                    Categories
+                </a>
+            </li>
+            <li>
+                <a routerLink="/brands" routerLinkActive="bg-green-50 text-primary" ariaCurrentWhenActive="page"
+                    data-drawer-hide="mobile-drawer" (click)="menuButton.focus()"
+                    class="block rounded-lg px-4 py-3 hover:bg-gray-50 hover:text-primary">
+                    Brands
+                </a>
+            </li>
+        </ul>
+
+        <ul class="space-y-2 border-b border-gray-100 py-4 text-lg text-secondary">
+            <li>
+                <a routerLink="/wishlist" data-drawer-hide="mobile-drawer" (click)="menuButton.focus()"
+                    class="flex items-center gap-4 rounded-lg px-4 py-2 hover:bg-gray-50">
+                    <span class="cursor-pointer flex size-10 items-center justify-center rounded-full bg-red-50 text-red-500">
+                        <i class="fa-regular fa-heart" aria-hidden="true"></i>
+                    </span>
+                    Wishlist
+                </a>
+            </li>
+            <li>
+                <a routerLink="/cart" data-drawer-hide="mobile-drawer" (click)="menuButton.focus()"
+                    class="flex items-center gap-4 rounded-lg px-4 py-2 hover:bg-gray-50">
+                    <span class="cursor-pointer flex size-10 items-center justify-center rounded-full bg-green-50 text-primary">
+                        <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                    </span>
+                    Cart
+                </a>
+            </li>
+        </ul>
+
+        <div class="flex items-center justify-between border-b border-gray-100 py-4">
+            <span class="flex items-center gap-3 px-4 text-lg text-secondary">
+                <i class="fa-solid fa-globe text-gray-500" aria-hidden="true"></i>
+                Language
+            </span>
+            <div role="group" aria-label="Language"
+                class="inline-flex rounded-full border border-gray-200 bg-gray-50 p-1">
+                <button type="button" aria-pressed="true"
+                    class="cursor-pointer rounded-full bg-primary px-4 py-1.5 font-semibold text-white">
+                    EN
+                </button>
+                <button type="button" aria-pressed="treu" lang="ar"
+                    class="cursor-pointer rounded-full px-4 py-1.5 font-semibold text-gray-600 hover:text-primary">
+                    عربي
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 py-5">
+            <a routerLink="/login" data-drawer-hide="mobile-drawer" (click)="menuButton.focus()"
+                class="rounded-xl border-2 border-primary bg-primary py-3 text-center text-lg font-semibold text-white hover:bg-green-700 cursor-pointer">
+                Sign In
+            </a>
+            <a routerLink="/register" data-drawer-hide="mobile-drawer" (click)="menuButton.focus()"
+                class="cursor-pointer rounded-xl border-2 border-primary py-3 text-center text-lg font-semibold text-primary hover:bg-green-50">
+                Sign Up
+            </a>
+        </div>
+
+        <div class="mb-5 flex items-center gap-4 rounded-xl border border-green-100 bg-green-50 p-4">
+            <span
+                class="flex size-11 shrink-0 items-center justify-center rounded-full bg-green-100 text-lg text-primary">
+                <i class="fa-solid fa-headset" aria-hidden="true"></i>
+            </span>
+            <div>
+                <p class="font-semibold text-secondary">Need Help?</p>
+                <a href="mailto:support@freshcart.com" class="text-primary hover:underline">Contact Support</a>
+            </div>
+        </div>
+    </div>
+</div>
+  

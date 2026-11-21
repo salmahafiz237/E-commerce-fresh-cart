@@ -1,1 +1,134 @@
-<p>footer works!</p>
+<footer class="bg-secondary text-gray-300">
+    <div
+        class="container grid grid-cols-2 gap-x-6 gap-y-10 px-4 py-12 sm:grid-cols-4 lg:grid-cols-12 lg:gap-x-8 lg:py-14">
+        <!-- Brand -->
+        <div class="col-span-2 sm:col-span-4 lg:col-span-4 lg:pe-8">
+            <a routerLink="/home" class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5"
+                aria-label="FreshCart home">
+                <i class="fa-solid fa-cart-shopping text-2xl text-primary" aria-hidden="true"></i>
+                <span class="text-2xl font-extrabold text-secondary">FreshCart</span>
+            </a>
+
+            <p class="mt-6 max-w-md leading-relaxed text-gray-400 lg:max-w-none">
+                FreshCart is your one-stop destination for quality products. From fashion to electronics,
+                we bring you the best brands at competitive prices with a seamless shopping experience.
+            </p>
+
+            <ul class="mt-6 space-y-3">
+                <li>
+                    <a href="tel:+18001234567" class="flex items-center gap-3 hover:text-primary">
+                        <i class="fa-solid fa-phone w-4 text-primary" aria-hidden="true"></i>
+                        +1 (800) 123-4567
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:support@freshcart.com" class="flex items-center gap-3 break-all hover:text-primary">
+                        <i class="fa-solid fa-envelope w-4 text-primary" aria-hidden="true"></i>
+                        support&#64;freshcart.com
+                    </a>
+                </li>
+                <li class="flex items-center gap-3">
+                    <i class="fa-solid fa-location-dot w-4 text-primary" aria-hidden="true"></i>
+                    123 Commerce Street, New York, NY 10001
+                </li>
+            </ul>
+
+            <ul class="mt-8 flex gap-3">
+                <li>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+                        class="flex size-11 items-center justify-center rounded-full bg-white/10 text-gray-300 transition-colors hover:bg-primary hover:text-white">
+                        <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+                        class="flex size-11 items-center justify-center rounded-full bg-white/10 text-gray-300 transition-colors hover:bg-primary hover:text-white">
+                        <i class="fa-brands fa-twitter" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                        class="flex size-11 items-center justify-center rounded-full bg-white/10 text-gray-300 transition-colors hover:bg-primary hover:text-white">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+                        class="flex size-11 items-center justify-center rounded-full bg-white/10 text-gray-300 transition-colors hover:bg-primary hover:text-white">
+                        <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Shop -->
+        <nav class="lg:col-span-2" aria-label="Shop">
+            <h2 class="text-lg font-semibold text-white">Shop</h2>
+            <ul class="mt-5 space-y-3">
+                <li><a routerLink="/shop" class="cursor-pointer transition-colors hover:text-primary">All Products</a></li>
+                <li><a routerLink="/categories" class="cursor-pointer transition-colors hover:text-primary">Categories</a></li>
+                <li><a routerLink="/brands" class="cursor-pointer transition-colors hover:text-primary">Brands</a></li>
+                <li><a routerLink="/categories" class="cursor-pointer transition-colors hover:text-primary">Electronics</a></li>
+                <li><a routerLink="/categories" class="cursor-pointer transition-colors hover:text-primary">Men's Fashion</a></li>
+                <li><a routerLink="/categories" class="cursor-pointer transition-colors hover:text-primary">Women's Fashion</a></li>
+            </ul>
+        </nav>
+
+        <!-- Account -->
+        <nav class="lg:col-span-2" aria-label="Account">
+            <h2 class="text-lg font-semibold text-white">Account</h2>
+            <ul class="mt-5 space-y-3">
+                <li><a routerLink="/account" class="cursor-pointer transition-colors hover:text-primary">My Account</a></li>
+                <li><a routerLink="/orders" class="cursor-pointer transition-colors hover:text-primary">Order History</a></li>
+                <li><a routerLink="/wishlist" class="cursor-pointer transition-colors hover:text-primary">Wishlist</a></li>
+                <li><a routerLink="/cart" class="cursor-pointer transition-colors hover:text-primary">Shopping Cart</a></li>
+                <li><a routerLink="/login" class="cursor-pointer transition-colors hover:text-primary">Sign In</a></li>
+                <li><a routerLink="/register" class="cursor-pointer transition-colors hover:text-primary">Create Account</a></li>
+            </ul>
+        </nav>
+
+        <!-- Support -->
+        <nav class="lg:col-span-2" aria-label="Support">
+            <h2 class="text-lg font-semibold text-white">Support</h2>
+            <ul class="mt-5 space-y-3">
+                <li><a routerLink="/contact" class="cursor-pointer transition-colors hover:text-primary">Contact Us</a></li>
+                <li><a routerLink="/help" class="cursor-pointer transition-colors hover:text-primary">Help Center</a></li>
+                <li><a routerLink="/shipping" class="cursor-pointer transition-colors hover:text-primary">Shipping Info</a></li>
+                <li><a routerLink="/returns" class="cursor-pointer transition-colors hover:text-primary">Returns &amp; Refunds</a></li>
+                <li><a routerLink="/orders" class="cursor-pointer transition-colors hover:text-primary">Track Order</a></li>
+            </ul>
+        </nav>
+
+        <!-- Legal -->
+        <nav class="lg:col-span-2" aria-label="Legal">
+            <h2 class="text-lg font-semibold text-white">Legal</h2>
+            <ul class="mt-5 space-y-3">
+                <li><a routerLink="/privacy" class="cursor-pointer transition-colors hover:text-primary">Privacy Policy</a></li>
+                <li><a routerLink="/terms" class="cursor-pointer transition-colors hover:text-primary">Terms of Service</a></li>
+                <li><a routerLink="/cookies" class="cursor-pointer transition-colors hover:text-primary">Cookie Policy</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/10">
+        <div
+            class="container flex flex-col items-center gap-4 px-4 py-6 text-sm text-gray-400 sm:flex-row sm:justify-between">
+            <p>&copy; 2026 FreshCart. All rights reserved.</p>
+            <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+                <li class="cursor-pointer flex items-center gap-2">
+                    <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+                    Visa
+                </li>
+                <li class="cursor-pointer flex items-center gap-2">
+                    <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+                    Mastercard
+                </li>
+                <li class="cursor-pointer flex items-center gap-2">
+                    <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+                    PayPal
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
