@@ -1,0 +1,13 @@
+<!-- title  -->
+<section>
+    <div class="container my-4">
+        <app-section-title title="Shop By" highlight="Category"></app-section-title>
+    </div>
+
+    <!-- card  -->
+    <div class="container mb-10 my-5 grid md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+        @for (category of allCategory(); track category) {
+        <app-card-category [category]="category"></app-card-category>
+        }
+    </div>
+</section>

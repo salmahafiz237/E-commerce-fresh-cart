@@ -9,7 +9,7 @@ export const routes: Routes = [
     
     {path: 'shop',loadComponent: () =>import('./features/shop/pages/shop/shop.component').then(m => m.ShopComponent)},
 
-    {path: 'shop/:id',loadComponent: () =>import('./features/shop/pages/shop-details/shop-details.component').then(m => m.ShopDetailsComponent)},
+    {path: 'shop/:slug/:id',loadComponent: () =>import('./features/shop/pages/shop-details/shop-details.component').then(m => m.ShopDetailsComponent)},
 
     {path: 'categories',loadComponent: () =>import('./features/categories/pages/categories-details/categories-details.component').then(m => m.CategoriesDetailsComponent)},
 

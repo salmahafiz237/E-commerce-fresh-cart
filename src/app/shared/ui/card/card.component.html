@@ -1,0 +1,45 @@
+<article
+    class="group mt-4 grid grid-rows-[auto_1fr] overflow-hidden rounded-xl border border-gray-200 bg-white p-4 transition hover:shadow-lg">
+    <!-- image + actions -->
+    <div class="relative grid place-items-center">
+        <img [src]="product().imageCover" [alt]="product().title" class="h-60 w-full object-contain" />
+
+        <div class="absolute top-0 right-0 grid gap-2">
+            <button type="button" aria-label="Add to wishlist"
+                class="grid size-9 cursor-pointer place-items-center rounded-full border border-gray-200 bg-white text-secondary shadow-sm transition hover:text-danger">
+                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+            </button>
+            <button type="button" aria-label="Compare"
+                class="grid size-9 cursor-pointer place-items-center rounded-full border border-gray-200 bg-white text-secondary shadow-sm transition hover:text-primary">
+                <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
+            </button>
+            <button type="button" aria-label="Quick view" [routerLink]="['/shop', product().slug, product().id]"
+                class="grid size-9 cursor-pointer place-items-center rounded-full border border-gray-200 bg-white text-secondary shadow-sm transition hover:text-primary">
+                <i class="fa-regular fa-eye" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- details -->
+    <div class="mt-4 grid content-end gap-1">
+        <span class="text-sm text-gray-500">{{product().category.name}}</span>
+        <h3 class="line-clamp-1 text-lg font-medium text-secondary">{{product().title}}</h3>
+
+        <div class="flex items-center gap-1 text-yellow-400">
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+            <i class="fa-regular fa-star" aria-hidden="true"></i>
+            <span class="ms-1 text-sm text-gray-500">{{product().ratingsAverage}} ({{product().ratingsQuantity}})</span>
+        </div>
+
+        <div class="mt-3 grid grid-cols-[1fr_auto] items-center">
+            <span class="text-lg font-bold text-secondary">{{product().price | currency:'GBP'}}</span>
+            <button type="button" aria-label="Add to cart"
+                class="grid size-11 cursor-pointer place-items-center rounded-full bg-primary text-white transition hover:bg-green-700">
+                <i class="fa-solid fa-plus text-lg" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</article>
