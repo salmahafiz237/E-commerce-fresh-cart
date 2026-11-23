@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FlowbiteService } from './../../core/services/flowbite.service';
 import { initFlowbite } from 'flowbite';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
 selector: 'app-navbar',
   styleUrl: './navbar.component.css',
   templateUrl: './navbar.component.html',
