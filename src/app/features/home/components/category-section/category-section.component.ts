@@ -1,7 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { SectionTitleComponent } from '../../../../shared/ui/section-title/section-title.component';
 import { CardCategoryComponent } from '../../../../shared/ui/card-category/card-category.component';
-import { ShopService } from '../../../../core/services/shop.service';
 import { Category } from '../../../../core/models/category.interface';
 import { CategoryService } from '../../../../core/services/category.service';
 

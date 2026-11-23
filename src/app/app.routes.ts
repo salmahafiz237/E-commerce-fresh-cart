@@ -13,7 +13,7 @@ export const routes: Routes = [
 
     {path: 'categories',loadComponent: () =>import('./features/categories/pages/categories-details/categories-details.component').then(m => m.CategoriesDetailsComponent)},
 
-    {path: 'categories/:id',loadComponent: () =>import('./features/categories/pages/categories-details/categories-details.component').then(m => m.CategoriesDetailsComponent)},
+    {path: 'categories/:slug/:id',loadComponent: () =>import('./features/categories/pages/categories-details/categories-details.component').then(m => m.CategoriesDetailsComponent)},
     
     {path: 'login',loadComponent: () =>import('./features/auth/pages/login/login.component').then(m => m.LoginComponent),title: 'Login'},
     

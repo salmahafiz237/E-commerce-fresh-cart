@@ -1,1 +1,81 @@
-<p>categories-details works!</p>
+<section class="min-h-screen bg-gray-50">
+
+    <!-- Header -->
+    <div class="bg-linear-to-r from-green-700 to-green-500 text-white">
+        <div class="max-w-7xl mx-auto px-6 py-8">
+            <div class="flex items-center gap-4">
+
+                <img [src]="category().image" [alt]="category().name"
+                    class="w-16 h-16 rounded-xl object-cover border-2 border-white" />
+
+                <div>
+                    <h1 class="text-2xl font-bold">
+                        {{ category().name }}
+                    </h1>
+
+                    <p class="text-green-100 mt-1">
+                        Explore everything in {{ category().name }}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Details -->
+    <div class="max-w-7xl mx-auto px-6 py-10">
+
+        <!-- Back Button -->
+        <a routerLink="/category-section"
+            class="cursor-pointer inline-flex items-center gap-2 text-gray-500 hover:text-green-600 transition-colors mb-8">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Back to Categories</span>
+        </a>
+
+        <!-- Details Card -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-10">
+
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-10">
+
+                <!-- Category Image -->
+                <div class="w-full md:w-1/2">
+                    <img [src]="category().image" [alt]="category().name"
+                        class="w-full h-80 md:h-112.5 object-cover rounded-xl" />
+                </div>
+
+                <!-- Category Information -->
+                <div class="w-full md:w-1/2 space-y-5">
+
+                    <h2 class="text-3xl font-bold text-gray-900">
+                        {{ category().name }}
+                    </h2>
+
+                    <!-- Slug -->
+                    <div class="flex flex-wrap items-center gap-3">
+                        <span class="text-gray-500 font-medium">Slug:</span>
+
+                        <span class="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm">
+                            {{ category().slug }}
+                        </span>
+                    </div>
+
+                    <!-- Created At -->
+                    <div class="flex items-center gap-3 text-gray-500">
+                        <span class="font-medium">Added:</span>
+                        <span>{{ category().createdAt | date:'MMM d, y' }}</span>
+                    </div>
+
+                    <!-- Updated At -->
+                    <div class="flex items-center gap-3 text-gray-500">
+                        <span class="font-medium">Last updated:</span>
+                        <span>{{ category().updatedAt | date:'MMM d, y' }}</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>

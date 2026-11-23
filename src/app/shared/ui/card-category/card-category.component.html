@@ -1,4 +1,5 @@
-<div class="bg-white border border-gray-200 rounded-lg
+<div   [routerLink]="['/categories', category().slug, category()._id]"
+    class="bg-white border border-gray-200 rounded-lg
          shadow-sm flex flex-col items-center justify-center
          gap-2 p-4 hover:shadow-md transition-all cursor-pointer">
     <div class="w-16 h-16 rounded-full overflow-hidden">
