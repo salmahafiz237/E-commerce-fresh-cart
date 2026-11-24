@@ -17,25 +17,27 @@ export class LoginComponent {
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['',[Validators.required,Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[#?!@$%^&*-]).{8,}$/)]],
-  })
-
+  });
 
   submitForm(): void {
-    if (this.loginForm.invalid) {
-        this.loginForm.markAllAsTouched();
-        return;
-    }
-
-    console.log(this.loginForm.value);
-
-    this.authService.signIn(this.loginForm.value).subscribe({
+    if (this.loginForm.valid) {
+      // send loginform value
+      this.authService.signIn(this.loginForm.value).subscribe({
         next: (res) => {
-            console.log(res.user);
+          if (res.message === 'success') {
+            // navigate home
+            // check success
+            // save token
+            localStorage.setItem('token', res.token);
+            localStorage.setItem('user', JSON.stringify(res.user));
 
-            if (res.message === 'success') {
-                this.router.navigate(['/']);
-            }
-        }
-    });
-}
+            console.log(res);
+            this.router.navigate(['/']);
+          }
+        },
+      });
+    } else {
+      this.loginForm.markAllAsTouched();
+    }
+  }
 }

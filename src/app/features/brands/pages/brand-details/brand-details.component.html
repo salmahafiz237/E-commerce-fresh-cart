@@ -1,1 +1,115 @@
-<p>brand-details works!</p>
+<div class="min-h-screen bg-gray-50/50">
+
+    <!-- Brand Header -->
+    <div class="bg-linear-to-br from-green-700 via-green-600 to-green-500 text-white">
+        <div class="container mx-auto px-4 py-10 sm:py-14">
+
+            <!-- Breadcrumb -->
+            <nav class="flex items-center gap-2 text-sm text-white/70 mb-6 flex-wrap">
+                <a routerLink="/" class="hover:text-white transition-colors">Home</a>
+                <span class="text-white/40">/</span>
+                <a routerLink="/brands" class="hover:text-white transition-colors">Brands</a>
+                <span class="text-white/40">/</span>
+                <span class="text-white font-medium">{{ brand()?.name }}</span>
+            </nav>
+
+            <!-- Brand Information -->
+            @if (brand(); as currentBrand) {
+            <div class="flex items-center gap-5">
+                <div
+                    class="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-xl ring-1 ring-white/30 p-2">
+                    <img [src]="currentBrand.image" [alt]="currentBrand.name" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight">
+                        {{ currentBrand.name }}
+                    </h1>
+                    <p class="text-white/80 mt-1">
+                        Shop {{ currentBrand.name }} products
+                    </p>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+
+    <!-- Brand Products -->
+    <div class="container mx-auto px-4 py-8">
+
+        <!-- Brand Error -->
+        @if (errorMessage()) {
+        <div class="text-center py-10 text-red-500">
+            {{ errorMessage() }}
+        </div>
+        }
+        @else {
+
+        <!-- Active Filters -->
+        <div class="mb-6 flex items-center gap-3 flex-wrap">
+            <span class="flex items-center gap-2 text-sm text-gray-600">
+                <i class="fa-solid fa-filter"></i>
+                Active Filters:
+            </span>
+
+            @if (brand(); as currentBrand) {
+            <a routerLink="/shop"
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-100 text-violet-700 text-sm font-medium hover:bg-violet-200 transition-colors">
+                <i class="fa-solid fa-tags text-xs"></i>
+                {{ currentBrand.name }}
+                <i class="fa-solid fa-xmark text-xs"></i>
+            </a>
+            }
+
+            <a routerLink="/shop" class="text-sm text-gray-500 hover:text-gray-700 underline">
+                Clear all
+            </a>
+        </div>
+
+        <!-- Products Count -->
+        <div class="mb-6 text-sm text-gray-500">
+            Showing {{ products().length }}
+            {{ products().length === 1 ? 'product' : 'products' }}
+        </div>
+
+        <!-- Products Error -->
+        @if (productsError()) {
+        <div class="text-center py-10 text-red-500">
+            {{ productsError() }}
+        </div>
+        }
+        @else {
+
+        <!-- Products Grid -->
+        @if (products().length > 0) {
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+            @for (product of products(); track product._id) {
+            <app-card [product]="product" />
+            }
+        </div>
+        }
+        @else {
+        <div class="text-center py-16">
+            <div class="w-20 h-20 mx-auto rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                <i class="fa-solid fa-box-open text-3xl text-gray-400"></i>
+            </div>
+
+            <h2 class="text-xl font-semibold text-gray-800 mb-2">
+                No Products Found
+            </h2>
+
+            <p class="text-gray-500">
+                There are no products available for this brand.
+            </p>
+
+            <a routerLink="/brands"
+                class="inline-block mt-5 px-6 py-2.5 rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors">
+                Explore Other Brands
+            </a>
+        </div>
+        }
+        }
+        }
+    </div>
+</div>
+
+<app-benifit-brand></app-benifit-brand>

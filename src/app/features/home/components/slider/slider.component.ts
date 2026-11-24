@@ -1,5 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import { register } from 'swiper/element';
+import { register } from 'swiper/element/bundle';
 
 @Component({
   imports: [],

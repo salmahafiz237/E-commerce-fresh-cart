@@ -1,0 +1,18 @@
+.brand-header {
+    background: linear-gradient(135deg, #15803d, #16a34a, #22c55e);
+}
+
+.brand-filter {
+    background-color: #f3e8ff;
+    color: #7e22ce;
+}
+
+.brand-button {
+    background-color: #16a34a;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.brand-button:hover {
+    background-color: #15803d;
+}

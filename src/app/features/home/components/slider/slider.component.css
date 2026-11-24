@@ -2,24 +2,55 @@
     background-image:
         linear-gradient(to right, #00c758e6, #05df7280), url(/assets/home-slider-1.d79601a8.png);
     background-size: cover;
-    background-position: center; }
+    background-position: center; 
+}
 
-    /* swiper-container::part(button-prev),
-    swiper-container::part(button-next){
-        width: 30px;
-        height: 30px;
-        color: var(--color-primary);
-        background-color: #ccc;
-        padding: 20px;
-        border-radius: 50%;
-        margin-inline: 20px;
-    } */
+.hero-swiper {
+    --swiper-navigation-size: 52px;
+    --swiper-navigation-sides-offset: 18px;
+    --swiper-navigation-color: var(--color-primary);
+    --swiper-pagination-bottom: 20px;
+}
 
-/* swiper-container::part(bullet),
-swiper-container::part(bullet-active){
-    width: 40px;
-    height: 10px;
+/* Arrows: solid white circles with a small green chevron */
+.hero-swiper::part(button-prev),
+.hero-swiper::part(button-next) {
+    box-sizing: border-box;
+    padding: 18px;
     background-color: #fff;
-    border-radius: 2px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.12);
+    transition: transform 0.2s ease; 
+}
 
-} */
+.hero-swiper::part(button-prev):hover,
+.hero-swiper::part(button-next):hover {
+    transform: scale(1.06);
+}
+
+/* Pagination: translucent dots, active one stretches into a white pill */
+.hero-swiper::part(bullet),
+.hero-swiper::part(bullet-active) {
+    width: 10px;
+    height: 10px;
+    margin: 0 4px;
+    background-color: #fff;
+    border-radius: 9999px;
+    opacity: 0.5;
+    transition:
+        width 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.hero-swiper::part(bullet-active) {
+    width: 36px;
+    opacity: 1;
+}
+
+/* Arrows would overlap the slide text on phones; swipe instead. */
+@media (max-width: 639px) {
+
+    .hero-swiper::part(button-prev),
+    .hero-swiper::part(button-next) {
+        display: none;
+    } }
