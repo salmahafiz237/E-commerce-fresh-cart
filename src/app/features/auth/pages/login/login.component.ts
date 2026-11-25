@@ -33,6 +33,7 @@ export class LoginComponent {
 
             console.log(res);
             this.router.navigate(['/']);
+            this.authService.isLogged.set(true);
           }
         },
       });

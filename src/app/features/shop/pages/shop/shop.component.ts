@@ -2,10 +2,9 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { CardComponent } from '../../../../shared/ui/card/card.component';
 import { Shop } from '../../../../core/models/shop.interface';
 import { ShopService } from '../../../../core/services/shop.service';
-import { SectionTitleComponent } from '../../../../shared/ui/section-title/section-title.component';
 
 @Component({
-  imports: [CardComponent, SectionTitleComponent],
+  imports: [CardComponent],
   selector: 'app-shop',
   styleUrl: './shop.component.css',
   templateUrl: './shop.component.html',

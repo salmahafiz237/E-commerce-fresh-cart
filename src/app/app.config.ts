@@ -8,6 +8,7 @@ import { provideHttpClient, withInterceptors, withXhr } from '@angular/common/ht
 import { loadingInterceptor } from './core/interceptors/loading-interceptor';
 import { errorInterceptor } from './core/interceptors/error-interceptor';
 import { headerInterceptor } from './core/interceptors/header-interceptor';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,7 +17,14 @@ export const appConfig: ApplicationConfig = {
     withViewTransitions()), 
     provideClientHydration(),
     importProvidersFrom(NgxSpinnerModule),
-    provideToastr(),
+    provideAnimationsAsync(),
+    provideToastr({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      progressBar: true,
+      closeButton: true
+    }),
     provideHttpClient(withInterceptors([loadingInterceptor, errorInterceptor, headerInterceptor]))
   ]
 };

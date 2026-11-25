@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { loggedGuard } from './core/guards/logged-guard';
 
 export const routes: Routes = [
     {path: '', loadComponent: () =>import('./features/home/pages/home/home.component').then(m => m.HomeComponent),title: 'Home'},
@@ -21,9 +22,13 @@ export const routes: Routes = [
     
     {path: 'forget-password',loadComponent: () =>import('./features/auth/pages/forget-password/forget-password.component').then(m => m.ForgetPasswordComponent),title: 'Forget Password'},
     
-    {path: 'cart',loadComponent: () =>import('./features/cart/pages/cart/cart.component').then(m => m.CartComponent)},
+    {path: 'cart',canActivate:[loggedGuard], loadComponent: () =>import('./features/cart/pages/cart/cart.component').then(m => m.CartComponent)},
     
-    {path: 'wishlist',loadComponent: () =>import('./features/wishlist/pages/wishlist/wishlist.component').then(m => m.WishlistComponent)},
+    {path: 'wishlist',canActivate:[loggedGuard],loadComponent: () =>import('./features/wishlist/pages/wishlist/wishlist.component').then(m => m.WishlistComponent)},
     
-    {path: '**',redirectTo: ''}
+    {path: 'checkout',canActivate:[loggedGuard],loadComponent: () =>import('./features/payment/pages/check-out/check-out.component').then(m => m.CheckOutComponent)},
+
+    {path: 'order',canActivate:[loggedGuard], loadComponent: () =>import('./features/payment/pages/orders/orders.component').then(m => m.OrdersComponent)},
+
+    {path: '**',redirectTo: '', pathMatch:'full'}
 ];
