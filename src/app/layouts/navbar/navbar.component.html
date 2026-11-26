@@ -20,24 +20,26 @@
         <!-- Links (desktop) -->
         <ul class="hidden shrink-0 items-center gap-7 text-lg text-secondary xl:flex">
             <li>
-                <a routerLink="/" routerLinkActive="text-primary" ariaCurrentWhenActive="page"
+                <a routerLink="/" routerLinkActive="text-primary" [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page"
                     class="hover:text-primary cursor-pointer">Home</a>
             </li>
             <li>
-                <a routerLink="/shop" routerLinkActive="text-primary" ariaCurrentWhenActive="page"
+                <a routerLink="/shop" routerLinkActive="text-primary" [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page"
                     class="hover:text-primary cursor-pointer">Shop</a>
             </li>
-            <li routerLinkActive="[&>button]:text-primary">
-                <button id="categories-button" type="button" data-dropdown-toggle="categories-dropdown"
-                    data-dropdown-trigger="hover" class="flex cursor-pointer items-center gap-2 hover:text-primary">
+            <li >
+                <button id="categories-button" type="button" routerLink="/categories" routerLinkActive="text-primary"
+                    [routerLinkActiveOptions]="{ exact: true }" data-dropdown-toggle="categories-dropdown" data-dropdown-trigger="hover"
+                    class="flex cursor-pointer items-center gap-2 hover:text-primary">
+                
                     Categories
                     <i class="fa-solid fa-chevron-down text-xs" aria-hidden="true"></i>
-                </button>
-                <div id="categories-dropdown"
+                    </button>
+                <div id="categories-dropdown" 
                     class="z-10 hidden w-56 rounded-xl border border-gray-100 bg-white shadow-lg">
                     <ul class="py-2 text-base text-gray-700" aria-labelledby="categories-button">
                         <li>
-                            <a routerLink="/categories"
+                            <a routerLink="/categories" 
                                 class="cursor-pointer block px-4 py-2 font-semibold hover:bg-gray-50 hover:text-primary">All
                                 Categories</a>
                         </li>
@@ -65,7 +67,7 @@
                 </div>
             </li>
             <li>
-                <a routerLink="/brands" routerLinkActive="text-primary" ariaCurrentWhenActive="page"
+                <a routerLink="/brands" routerLinkActive="text-primary" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: true }"
                     class="hover:text-primary cursor-pointer">Brands</a>
             </li>
         </ul>

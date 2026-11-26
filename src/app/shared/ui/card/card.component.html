@@ -36,7 +36,8 @@
 
         <div class="mt-3 grid grid-cols-[1fr_auto] items-center">
             <span class="text-lg font-bold text-secondary">{{product().price | currency:'GBP'}}</span>
-            <button type="button" aria-label="Add to cart"
+            
+            <button (click)="addProduct(product().id)" type="button" aria-label="Add to cart"
                 class="grid size-11 cursor-pointer place-items-center rounded-full bg-primary text-white transition hover:bg-green-700">
                 <i class="fa-solid fa-plus text-lg" aria-hidden="true"></i>
             </button>
