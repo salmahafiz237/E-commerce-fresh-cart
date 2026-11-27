@@ -14,4 +14,8 @@ export class CategoryService {
     getSingleCategory(categoryId: string):Observable<any>{
         return this.httpClient.get(environment.baseUrl + `categories/${categoryId}`);
     }
+
+    getSubCategoriesOnCategory(categoryId: string):Observable<any>{
+        return this.httpClient.get(environment.baseUrl + `categories/${categoryId}/subcategories`);
+    }
 }
