@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { BenifitBrandComponent } from '../../../../shared/ui/benifit-brand/benifit-brand.component';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Cart } from '../../../cart/models/cart.interface';
 import { DecimalPipe } from '@angular/common';
@@ -16,18 +16,18 @@ export class CheckOutComponent implements OnInit{
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly formBuilder = inject(FormBuilder);
   private readonly cartService = inject(CartService);
+  private readonly router = inject(Router);
+
 
   flag = signal('cash');
   cartId: string | null = null;
   cartDetails = signal<Cart>({} as Cart);
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe({
-      next:(params)=>{
-        params.get('id')
-        console.log(params.get('id'));
-      }
-    })
+    this.cartId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.cartService.getLoggedUserCart().subscribe({
+      next: (res) => this.cartDetails.set(res.data),
+    });
   }
 
   checkOutForm = this.formBuilder.group({
@@ -39,32 +39,26 @@ export class CheckOutComponent implements OnInit{
   })
 
   
-submitForm(): void {
-  if (this.checkOutForm.invalid) {
-    this.checkOutForm.markAllAsTouched();
-    return;
+  submitForm(): void {
+    if (this.checkOutForm.invalid) {
+      this.checkOutForm.markAllAsTouched();
+      return;
+    }
+    if (!this.cartId) return;
+  
+    const body = this.checkOutForm.getRawValue();
+  
+    if (this.flag() === 'cash') {
+      this.cartService.createCashOrder(this.cartId, body).subscribe({
+        next: () => {
+          this.cartService.cartCount.set(0);
+          this.router.navigate(['/order']);
+        },
+      });
+    } else {
+      this.cartService.createCheckOut(this.cartId, body).subscribe({
+        next: (res) => window.open(res.session.url, '_self'),
+      });
+    }
   }
-
-  if (!this.cartId) {
-    console.log('Cart ID is missing');
-    return;
-  }
-
-  if (this.flag() === 'cash') {
-
-    this.cartService.createCashOrder(this.cartId,this.checkOutForm.value).subscribe({
-      next: (res) => {
-        console.log(res);
-        //navigate to order page
-      }
-    });
-  } else {
-    this.cartService.createCheckOut(this.cartId, this.checkOutForm.value).subscribe({
-      next: (res) => {
-        console.log(res);
-        window.open(res.session.url, '_self')
-      }
-    });
-  }
-}
 }

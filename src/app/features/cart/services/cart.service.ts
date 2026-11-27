@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Service, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
+import { Order } from '../../payment/models/order.interface';
 
 @Service()
 export class CartService {
@@ -36,7 +37,11 @@ export class CartService {
         return this.httpClient.post(environment.baseUrl + `orders/${cartId}`, data);
     }
 
-    createCheckOut(cartId:string, data:object):Observable<any>{
-        return this.httpClient.post(environment.baseUrl + `orders/checkout-session/${cartId}?url=http://localhost:4200/`, data);
+    createCheckOut(cartId: string, data: object): Observable<any> {
+        return this.httpClient.post(environment.baseUrl + `orders/checkout-session/${cartId}?url=http://localhost:4200/order`,data);
+    }
+
+    getUserOrders(userId: string): Observable<Order[]> {
+        return this.httpClient.get<Order[]>(environment.baseUrl + `orders/user/${userId}`);
     }
 }

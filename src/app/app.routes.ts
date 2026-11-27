@@ -24,13 +24,16 @@ export const routes: Routes = [
     
     {path: 'forget-password',loadComponent: () =>import('./features/auth/pages/forget-password/forget-password.component').then(m => m.ForgetPasswordComponent),title: 'Forget Password'},
     
-    {path: 'cart',canActivate:[loggedGuard], loadComponent: () =>import('./features/cart/pages/cart/cart.component').then(m => m.CartComponent)},
+    {path: 'cart',canActivate:[loggedGuard], loadComponent: () =>import('./features/cart/pages/cart/cart.component').then(m => m.CartComponent),title: 'Cart'},
     
-    {path: 'wishlist',canActivate:[loggedGuard],loadComponent: () =>import('./features/wishlist/pages/wishlist/wishlist.component').then(m => m.WishlistComponent)},
+    {path: 'wishlist',canActivate:[loggedGuard],loadComponent: () =>import('./features/wishlist/pages/wishlist/wishlist.component').then(m => m.WishlistComponent),title: 'Wishlist'},
     
-    {path: 'checkout/:id',canActivate:[loggedGuard],loadComponent: () =>import('./features/payment/pages/check-out/check-out.component').then(m => m.CheckOutComponent)},
+    {path: 'checkout/:id',canActivate:[loggedGuard],loadComponent: () =>import('./features/payment/pages/check-out/check-out.component').then(m => m.CheckOutComponent),title: 'Checkout'},
 
-    {path: 'order',canActivate:[loggedGuard], loadComponent: () =>import('./features/payment/pages/orders/orders.component').then(m => m.OrdersComponent)},
+    {path: 'order',canActivate:[loggedGuard], loadComponent: () =>import('./features/payment/pages/orders/orders.component').then(m => m.OrdersComponent),title: 'My Orders'},
+
+    // Safety net in case the payment API redirects to /allorders
+    {path: 'allorders', redirectTo: 'order', pathMatch: 'full'},
 
     {path: '**',redirectTo: '', pathMatch:'full'}
 ];

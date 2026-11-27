@@ -56,6 +56,7 @@
 
                         <form (ngSubmit)="submitForm()" [formGroup]="checkOutForm" id="checkOutForm" class="space-y-6">
                             <div formGroupName="shippingAddress" class="space-y-6">
+
                                 <!-- Information Alert -->
                                 <div class="flex items-center gap-4 p-5 bg-blue-50 border border-blue-100 rounded-xl">
 
@@ -91,11 +92,18 @@
                                             <i class="fa-solid fa-city"></i>
                                         </span>
 
-                                        <input formControlName="city" id="city" type="text" formControlName="city"
+                                        <input formControlName="city" id="city" type="text"
                                             placeholder="e.g. Cairo, Alexandria, Giza"
                                             class="w-full bg-white border border-gray-300 rounded-xl py-4 ps-12 pe-4 text-sm text-secondary outline-none transition-all duration-300 hover:border-green-400 focus:border-primary focus:ring-4 focus:ring-green-100" />
 
                                     </div>
+
+                                    @if (checkOutForm.get('shippingAddress.city')?.touched &&
+                                    checkOutForm.get('shippingAddress.city')?.invalid) {
+                                    <p class="text-danger text-xs mt-2">
+                                        Please enter a valid city (at least 2 characters).
+                                    </p>
+                                    }
 
                                 </div>
 
@@ -114,11 +122,18 @@
                                             <i class="fa-solid fa-location-dot"></i>
                                         </span>
 
-                                        <textarea formControlName="details" id="address" rows="3" formControlName="details"
+                                        <textarea formControlName="details" id="address" rows="3"
                                             placeholder="Street name, building number, floor, apartment..."
                                             class="w-full bg-white border border-gray-300 rounded-xl py-4 ps-12 pe-4 text-sm text-secondary outline-none resize-none transition-all duration-300 hover:border-green-400 focus:border-primary focus:ring-4 focus:ring-green-100"></textarea>
 
                                     </div>
+
+                                    @if (checkOutForm.get('shippingAddress.details')?.touched &&
+                                    checkOutForm.get('shippingAddress.details')?.invalid) {
+                                    <p class="text-danger text-xs mt-2">
+                                        Please enter your full address (at least 10 characters).
+                                    </p>
+                                    }
 
                                 </div>
 
@@ -137,7 +152,7 @@
                                             <i class="fa-solid fa-phone"></i>
                                         </span>
 
-                                        <input formControlName="phone" id="phone" type="tel" formControlName="phone" placeholder="01xxxxxxxxx"
+                                        <input formControlName="phone" id="phone" type="tel" placeholder="01xxxxxxxxx"
                                             class="w-full bg-white border border-gray-300 rounded-xl py-4 ps-12 pe-36 text-sm text-secondary outline-none transition-all duration-300 hover:border-green-400 focus:border-primary focus:ring-4 focus:ring-green-100" />
 
                                         <span
@@ -146,6 +161,13 @@
                                         </span>
 
                                     </div>
+
+                                    @if (checkOutForm.get('shippingAddress.phone')?.touched &&
+                                    checkOutForm.get('shippingAddress.phone')?.invalid) {
+                                    <p class="text-danger text-xs mt-2">
+                                        Enter a valid Egyptian number, e.g. 01012345678.
+                                    </p>
+                                    }
 
                                 </div>
 
@@ -175,14 +197,16 @@
                                     <!-- Cash on Delivery -->
                                     <div>
 
-                                        <input (change)="flag.set('cash')" type="radio" name="paymentMethod" id="cash" value="cash"
-                                            class="peer sr-only" checked />
+                                        <input (change)="flag.set('cash')" type="radio" name="paymentMethod" id="cash"
+                                            value="cash" class="sr-only" [checked]="flag() === 'cash'" />
 
                                         <label for="cash"
-                                            class="flex items-center gap-5 p-5 border-2 border-gray-200 rounded-xl cursor-pointer transition-all duration-300 hover:border-green-400 peer-checked:border-primary peer-checked:bg-green-50">
+                                            class="flex items-center gap-5 p-5 border-2 rounded-xl cursor-pointer transition-all duration-300 hover:border-green-400"
+                                            [class]="flag() === 'cash' ? 'border-primary bg-green-50' : 'border-gray-200'">
 
                                             <span
-                                                class="w-16 h-16 shrink-0 flex items-center justify-center rounded-2xl bg-gray-100 text-gray-400 text-2xl transition-all duration-300 peer-checked:bg-green-500 peer-checked:text-white">
+                                                class="w-16 h-16 shrink-0 flex items-center justify-center rounded-2xl text-2xl transition-all duration-300"
+                                                [class]="flag() === 'cash' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-400'">
                                                 <i class="fa-solid fa-money-bill-wave"></i>
                                             </span>
 
@@ -197,7 +221,8 @@
                                             </span>
 
                                             <span
-                                                class="w-8 h-8 rounded-full border-2 border-gray-200 flex items-center justify-center text-white transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary">
+                                                class="w-8 h-8 rounded-full border-2 flex items-center justify-center text-white transition-all duration-300"
+                                                [class]="flag() === 'cash' ? 'bg-primary border-primary' : 'border-gray-200'">
                                                 <i class="fa-solid fa-check text-sm"></i>
                                             </span>
 
@@ -209,14 +234,16 @@
                                     <!-- Pay Online -->
                                     <div>
 
-                                        <input (change)="flag.set('visa')" type="radio" name="paymentMethod" id="online" value="online"
-                                            class="peer sr-only" />
+                                        <input (change)="flag.set('visa')" type="radio" name="paymentMethod" id="online"
+                                            value="online" class="sr-only" [checked]="flag() === 'visa'" />
 
                                         <label for="online"
-                                            class="flex items-center gap-5 p-5 border-2 border-gray-200 rounded-xl cursor-pointer transition-all duration-300 hover:border-green-400 peer-checked:border-primary peer-checked:bg-linear-to-r peer-checked:from-green-50 peer-checked:to-blue-50">
+                                            class="flex items-center gap-5 p-5 border-2 rounded-xl cursor-pointer transition-all duration-300 hover:border-green-400"
+                                            [class]="flag() === 'visa' ? 'border-primary bg-linear-to-r from-green-50 to-blue-50' : 'border-gray-200'">
 
                                             <span
-                                                class="w-16 h-16 shrink-0 flex items-center justify-center rounded-2xl bg-gray-100 text-gray-400 text-2xl transition-all duration-300 peer-checked:bg-linear-to-br peer-checked:from-primary peer-checked:to-blue-500 peer-checked:text-white">
+                                                class="w-16 h-16 shrink-0 flex items-center justify-center rounded-2xl text-2xl transition-all duration-300"
+                                                [class]="flag() === 'visa' ? 'bg-linear-to-br from-primary to-blue-500 text-white' : 'bg-gray-100 text-gray-400'">
                                                 <i class="fa-solid fa-credit-card"></i>
                                             </span>
 
@@ -239,7 +266,8 @@
                                             </span>
 
                                             <span
-                                                class="w-8 h-8 rounded-full border-2 border-gray-200 flex items-center justify-center text-white transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary">
+                                                class="w-8 h-8 rounded-full border-2 flex items-center justify-center text-white transition-all duration-300"
+                                                [class]="flag() === 'visa' ? 'bg-primary border-primary' : 'border-gray-200'">
                                                 <i class="fa-solid fa-check text-sm"></i>
                                             </span>
 
@@ -326,13 +354,13 @@
                                     </h3>
 
                                     <p class="text-xs text-gray-500 mt-1">
-                                        {{ item.count }} × {{ item.price }} EGP
+                                        {{ item.count }} × {{ item.price | number }} EGP
                                     </p>
 
                                 </div>
 
                                 <span class="font-bold text-secondary text-sm whitespace-nowrap">
-                                    {{ item.price * item.count }}
+                                    {{ item.price * item.count | number }} EGP
                                 </span>
 
                             </div>
@@ -395,7 +423,7 @@
                             <i class="fa-solid fa-lock transition-transform duration-300 group-hover:scale-110"></i>
 
                             <span>
-                                {{ checkOutForm.get('paymentMethod')?.value === 'online'? 'Proceed to Payment': 'Place Order' }}                       
+                                {{ flag() === 'visa' ? 'Proceed to Payment' : 'Place Order' }}
                             </span>
 
                         </button>
