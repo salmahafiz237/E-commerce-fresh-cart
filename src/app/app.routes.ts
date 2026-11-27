@@ -5,6 +5,8 @@ export const routes: Routes = [
     {path: '', loadComponent: () =>import('./features/home/pages/home/home.component').then(m => m.HomeComponent),title: 'Home'},
     
     {path: 'brands', loadComponent: () =>import('./features/brands/pages/brands/brands.component').then(m => m.BrandsComponent)},
+
+    {path: 'support', loadComponent: () =>import('./features/support/pages/support/support.component').then(m => m.SupportComponent)},
     
     {path: 'brands/:id',loadComponent: () =>import('./features/brands/pages/brand-details/brand-details.component').then(m => m.BrandDetailsComponent)},
     
