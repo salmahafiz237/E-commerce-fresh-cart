@@ -26,7 +26,7 @@ export const routes: Routes = [
     
     {path: 'wishlist',canActivate:[loggedGuard],loadComponent: () =>import('./features/wishlist/pages/wishlist/wishlist.component').then(m => m.WishlistComponent)},
     
-    {path: 'checkout',canActivate:[loggedGuard],loadComponent: () =>import('./features/payment/pages/check-out/check-out.component').then(m => m.CheckOutComponent)},
+    {path: 'checkout/:id',canActivate:[loggedGuard],loadComponent: () =>import('./features/payment/pages/check-out/check-out.component').then(m => m.CheckOutComponent)},
 
     {path: 'order',canActivate:[loggedGuard], loadComponent: () =>import('./features/payment/pages/orders/orders.component').then(m => m.OrdersComponent)},
 

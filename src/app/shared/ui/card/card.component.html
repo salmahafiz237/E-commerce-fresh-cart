@@ -5,9 +5,11 @@
         <img [src]="product().imageCover" [alt]="product().title" class="h-60 w-full object-contain" />
 
         <div class="absolute top-0 right-0 grid gap-2">
-            <button type="button" aria-label="Add to wishlist"
-                class="grid size-9 cursor-pointer place-items-center rounded-full border border-gray-200 bg-white text-secondary shadow-sm transition hover:text-danger">
-                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+            <button type="button" (click)="toggleWishlist()"
+                [attr.aria-label]="isInWishlist() ? 'Remove from wishlist' : 'Add to wishlist'" [attr.aria-pressed]="isInWishlist()"
+                class="grid size-9 cursor-pointer place-items-center rounded-full border border-gray-200 bg-white shadow-sm transition hover:text-danger"
+                [class]="isInWishlist() ? 'text-danger' : 'text-secondary'">
+                <i [class]="isInWishlist() ? 'fa-solid fa-heart' : 'fa-regular fa-heart'" aria-hidden="true"></i>
             </button>
             <button type="button" aria-label="Compare"
                 class="grid size-9 cursor-pointer place-items-center rounded-full border border-gray-200 bg-white text-secondary shadow-sm transition hover:text-primary">

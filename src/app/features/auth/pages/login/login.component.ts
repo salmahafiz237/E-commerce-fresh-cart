@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { WishlistService } from '../../../wishlist/services/wishlist.service';
 
 @Component({
   imports: [RouterLink, ReactiveFormsModule],
@@ -12,6 +13,8 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
   private readonly fb = inject(FormBuilder);
   private authService = inject(AuthService);
+  private wishlistService = inject(WishlistService);
+
   private router = inject(Router);
 
   loginForm = this.fb.group({
@@ -30,6 +33,8 @@ export class LoginComponent {
             // save token
             localStorage.setItem('token', res.token);
             localStorage.setItem('user', JSON.stringify(res.user));
+            this.authService.isLogged.set(true);
+            this.wishlistService.getLoggedUserWishlist().subscribe();
 
             console.log(res);
             this.router.navigate(['/']);
