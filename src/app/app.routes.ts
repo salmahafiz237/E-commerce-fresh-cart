@@ -8,6 +8,8 @@ export const routes: Routes = [
 
     {path: 'support', loadComponent: () =>import('./features/support/pages/support/support.component').then(m => m.SupportComponent)},
     
+    {path: 'account',canActivate:[loggedGuard], loadComponent: () =>import('./features/myAccount/pages/account/account.component').then(m => m.AccountComponent),title: 'My Account'},
+
     {path: 'brands/:id',loadComponent: () =>import('./features/brands/pages/brand-details/brand-details.component').then(m => m.BrandDetailsComponent)},
     
     {path: 'shop',loadComponent: () =>import('./features/shop/pages/shop/shop.component').then(m => m.ShopComponent)},

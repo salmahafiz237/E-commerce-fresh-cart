@@ -20,61 +20,65 @@
         <!-- Links (desktop) -->
         <ul class="hidden shrink-0 items-center gap-7 text-lg text-secondary xl:flex">
             <li>
-                <a routerLink="/" routerLinkActive="text-primary" [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page"
-                    class="hover:text-primary cursor-pointer">Home</a>
+                <a routerLink="/" routerLinkActive="text-primary" [routerLinkActiveOptions]="{ exact: true }"
+                    ariaCurrentWhenActive="page" class="hover:text-primary cursor-pointer">Home</a>
             </li>
             <li>
-                <a routerLink="/shop" routerLinkActive="text-primary" [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page"
-                    class="hover:text-primary cursor-pointer">Shop</a>
+                <a routerLink="/shop" routerLinkActive="text-primary" [routerLinkActiveOptions]="{ exact: true }"
+                    ariaCurrentWhenActive="page" class="hover:text-primary cursor-pointer">Shop</a>
             </li>
-            <li >
+            <li>
                 <button id="categories-button" type="button" routerLink="/categories" routerLinkActive="text-primary"
-                    [routerLinkActiveOptions]="{ exact: true }" data-dropdown-toggle="categories-dropdown" data-dropdown-trigger="hover"
-                    class="flex cursor-pointer items-center gap-2 hover:text-primary">
-                
+                    [routerLinkActiveOptions]="{ exact: true }" data-dropdown-toggle="categories-dropdown"
+                    data-dropdown-trigger="hover" class="flex cursor-pointer items-center gap-2 hover:text-primary">
+
                     Categories
                     <i class="fa-solid fa-chevron-down text-xs" aria-hidden="true"></i>
-                    </button>
-                <div id="categories-dropdown" 
+                </button>
+                <div id="categories-dropdown"
                     class="z-10 hidden w-56 rounded-xl border border-gray-100 bg-white shadow-lg">
                     <ul class="py-2 text-base text-gray-700" aria-labelledby="categories-button">
                         <li>
-                            <a routerLink="/categories" 
+                            <a routerLink="/categories"
                                 class="cursor-pointer block px-4 py-2 font-semibold hover:bg-gray-50 hover:text-primary">All
                                 Categories</a>
                         </li>
                         <li>
-                            <a routerLink="/shop" 
-                                class="cursor-pointer block px-4 py-2 hover:bg-gray-50 hover:text-primary">Men's Fashion</a>
+                            <a routerLink="/shop"
+                                class="cursor-pointer block px-4 py-2 hover:bg-gray-50 hover:text-primary">Men's
+                                Fashion</a>
                         </li>
                         <li>
-                            <a routerLink="/shop" 
-                                class="cursor-pointer block px-4 py-2 hover:bg-gray-50 hover:text-primary">Women's Fashion</a>
+                            <a routerLink="/shop"
+                                class="cursor-pointer block px-4 py-2 hover:bg-gray-50 hover:text-primary">Women's
+                                Fashion</a>
                         </li>
                         <li>
                             <a routerLink="/shop"
                                 class="cursor-pointer block px-4 py-2 hover:bg-gray-50 hover:text-primary">Electronics</a>
                         </li>
                         <li>
-                            <a routerLink="/shop" 
-                                class="cursor-pointer block px-4 py-2 hover:bg-gray-50 hover:text-primary">Beauty &amp; Health</a>
+                            <a routerLink="/shop"
+                                class="cursor-pointer block px-4 py-2 hover:bg-gray-50 hover:text-primary">Beauty &amp;
+                                Health</a>
                         </li>
                         <li>
-                            <a routerLink="/shop" 
+                            <a routerLink="/shop"
                                 class="cursor-pointer block px-4 py-2 hover:bg-gray-50 hover:text-primary">SuperMarket</a>
                         </li>
                     </ul>
                 </div>
             </li>
             <li>
-                <a routerLink="/brands" routerLinkActive="text-primary" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: true }"
-                    class="hover:text-primary cursor-pointer">Brands</a>
+                <a routerLink="/brands" routerLinkActive="text-primary" ariaCurrentWhenActive="page"
+                    [routerLinkActiveOptions]="{ exact: true }" class="hover:text-primary cursor-pointer">Brands</a>
             </li>
         </ul>
 
         <!-- Support (wide screens) -->
         <a routerLink="/support" class="hidden shrink-0 items-center gap-3 border-e border-gray-200 pe-8 2xl:flex">
-            <span class="flex size-11 items-center justify-center rounded-full bg-green-50 text-lg text-primary cursor-pointer">
+            <span
+                class="flex size-11 items-center justify-center rounded-full bg-green-50 text-lg text-primary cursor-pointer">
                 <i class="fa-solid fa-headset" aria-hidden="true"></i>
             </span>
             <div class="leading-tight cursor-pointer">
@@ -100,7 +104,7 @@
             <a routerLink="/wishlist" routerLinkActive="text-primary" aria-label="Wishlist"
                 class="relative flex size-11 items-center justify-center rounded-full text-2xl text-gray-500 hover:bg-gray-100 hover:text-primary">
                 <i class="fa-regular fa-heart" aria-hidden="true"></i>
-            
+
                 @if (WishlistNum() > 0) {
                 <span
                     class="absolute -top-0.5 -right-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-2xs font-bold text-white ring-2 ring-white">
@@ -111,9 +115,9 @@
 
             <a routerLink="/cart" routerLinkActive="text-primary" aria-label="Cart"
                 class="relative flex size-11 items-center justify-center rounded-full text-2xl text-gray-500 hover:bg-gray-100 hover:text-primary">
-            
+
                 <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
-            
+
                 <span
                     class="absolute -top-0.5 -right-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 text-2xs font-bold text-white ring-2 ring-white">
                     {{ CartNum() }}
@@ -121,18 +125,29 @@
             </a>
 
             @if (isLogged()) {
-                <a
-                (click)="signOut()"
+            <!-- My Orders -->
+            <a routerLink="/order" routerLinkActive="text-primary" aria-label="My orders" title="My Orders"
+                class="hidden size-11 items-center justify-center rounded-full text-2xl text-gray-500 hover:bg-gray-100 hover:text-primary xl:flex">
+                <i class="fa-solid fa-box" aria-hidden="true"></i>
+            </a>
+
+            <!-- My Account -->
+            <a routerLink="/account" routerLinkActive="text-primary" aria-label="My account" title="My Account"
+                class="hidden size-11 items-center justify-center rounded-full text-2xl text-gray-500 hover:bg-gray-100 hover:text-primary xl:flex">
+                <i class="fa-regular fa-user" aria-hidden="true"></i>
+            </a>
+
+            <a (click)="signOut()"
                 class="ms-4 hidden cursor-pointer items-center gap-2 rounded-full bg-primary px-8 py-3 text-lg font-semibold text-white hover:bg-green-700 focus:ring-4 focus:ring-green-300 focus:outline-none xl:inline-flex">
-                <i class="fa-regular fa-user text-base" aria-hidden="true"></i>
+                <i class="fa-solid fa-right-from-bracket text-base" aria-hidden="true"></i>
                 Sign Out
             </a>
             }@else {
-                <a routerLink="/login"
-                    class="ms-4 hidden cursor-pointer items-center gap-2 rounded-full bg-primary px-8 py-3 text-lg font-semibold text-white hover:bg-green-700 focus:ring-4 focus:ring-green-300 focus:outline-none xl:inline-flex">
-                    <i class="fa-regular fa-user text-base" aria-hidden="true"></i>
-                    Sign In
-                </a>
+            <a routerLink="/login"
+                class="ms-4 hidden cursor-pointer items-center gap-2 rounded-full bg-primary px-8 py-3 text-lg font-semibold text-white hover:bg-green-700 focus:ring-4 focus:ring-green-300 focus:outline-none xl:inline-flex">
+                <i class="fa-regular fa-user text-base" aria-hidden="true"></i>
+                Sign In
+            </a>
             }
 
             <button type="button" #menuButton data-drawer-target="mobile-drawer" data-drawer-show="mobile-drawer"
@@ -209,7 +224,7 @@
                 <a routerLink="/wishlist" routerLinkActive="text-primary" aria-label="Wishlist"
                     class="relative flex size-11 items-center justify-center rounded-full text-2xl text-gray-500 hover:bg-gray-100 hover:text-primary">
                     <i class="fa-regular fa-heart" aria-hidden="true"></i>
-                
+
                     @if (WishlistNum() > 0) {
                     <span
                         class="absolute -top-0.5 -right-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-2xs font-bold text-white ring-2 ring-white">
@@ -221,12 +236,35 @@
             <li>
                 <a routerLink="/cart" data-drawer-hide="mobile-drawer" (click)="menuButton.focus()"
                     class="flex items-center gap-4 rounded-lg px-4 py-2 hover:bg-gray-50">
-                    <span class="cursor-pointer flex size-10 items-center justify-center rounded-full bg-green-50 text-primary">
+                    <span
+                        class="cursor-pointer flex size-10 items-center justify-center rounded-full bg-green-50 text-primary">
                         <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
                     </span>
                     Cart
                 </a>
             </li>
+            @if (isLogged()) {
+            <li>
+                <a routerLink="/order" routerLinkActive="text-primary" data-drawer-hide="mobile-drawer"
+                    (click)="menuButton.focus()" class="flex items-center gap-4 rounded-lg px-4 py-2 hover:bg-gray-50">
+                    <span
+                        class="cursor-pointer flex size-10 items-center justify-center rounded-full bg-green-50 text-primary">
+                        <i class="fa-solid fa-box" aria-hidden="true"></i>
+                    </span>
+                    My Orders
+                </a>
+            </li>
+            <li>
+                <a routerLink="/account" routerLinkActive="text-primary" data-drawer-hide="mobile-drawer"
+                    (click)="menuButton.focus()" class="flex items-center gap-4 rounded-lg px-4 py-2 hover:bg-gray-50">
+                    <span
+                        class="cursor-pointer flex size-10 items-center justify-center rounded-full bg-green-50 text-primary">
+                        <i class="fa-regular fa-user" aria-hidden="true"></i>
+                    </span>
+                    My Account
+                </a>
+            </li>
+            }
         </ul>
 
         <div class="flex items-center justify-between border-b border-gray-100 py-4">
@@ -240,13 +278,22 @@
                     class="cursor-pointer rounded-full bg-primary px-4 py-1.5 font-semibold text-white">
                     EN
                 </button>
-                <button type="button" aria-pressed="treu" lang="ar"
+                <button type="button" aria-pressed="false" lang="ar"
                     class="cursor-pointer rounded-full px-4 py-1.5 font-semibold text-gray-600 hover:text-primary">
                     عربي
                 </button>
             </div>
         </div>
 
+        @if (isLogged()) {
+        <div class="py-5">
+            <button type="button" (click)="signOut()" data-drawer-hide="mobile-drawer"
+                class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-primary bg-primary py-3 text-lg font-semibold text-white hover:bg-green-700">
+                <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
+                Sign Out
+            </button>
+        </div>
+        } @else {
         <div class="grid grid-cols-2 gap-3 py-5">
             <a routerLink="/login" data-drawer-hide="mobile-drawer" (click)="menuButton.focus()"
                 class="rounded-xl border-2 border-primary bg-primary py-3 text-center text-lg font-semibold text-white hover:bg-green-700 cursor-pointer">
@@ -257,9 +304,12 @@
                 Sign Up
             </a>
         </div>
+        }
 
-        <a routerLink="/support" class="hidden shrink-0 items-center gap-3 border-e border-gray-200 pe-8 2xl:flex">
-            <span class="flex size-11 items-center justify-center rounded-full bg-green-50 text-lg text-primary cursor-pointer">
+        <a routerLink="/support" data-drawer-hide="mobile-drawer" (click)="menuButton.focus()"
+            class="flex shrink-0 items-center gap-3 pb-6">
+            <span
+                class="flex size-11 items-center justify-center rounded-full bg-green-50 text-lg text-primary cursor-pointer">
                 <i class="fa-solid fa-headset" aria-hidden="true"></i>
             </span>
             <div class="leading-tight cursor-pointer">
@@ -269,4 +319,3 @@
         </a>
     </div>
 </div>
-  
